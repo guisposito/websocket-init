@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello Express!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>My ZapZap2</h1>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+      var socket = io();
+
+      //Recebe mensagem para a tag p
+      socket.on('mensagem', (data) => {
+        document.getElementById('msgs').innerHTML += data + '<br />';
+      });
+
+      //Coleta o dado do usuário
+      function collectUserName() {
+        let userName = document.querySelector('#user-name').value;
+        let userMsg = document.querySelector('#user-msg').value;
+
+        socket.emit('userName', { name: userName, msg: userMsg });
+        msgToBox();
+      }
+
+      //Ouve a mensagem vinda do servidor e disponibiliza no quadro
+      function msgToBox() {
+        let myBox = document.querySelector('.box-msgs');
+        socket.on('retMsg', (data) => {
+          console.log(data);
+          myBox.innerHTML += `
+          <div class="box-msgrec">
+            <h4 class="msg-enviada">${data.name} </h4>
+            <p class="msgTxt">${data.msg} </p>
+          </div>
+          `;
+          myBox = '';
+        });
+      }
+
+      function enviarMsg() {
+        socket.emit('mensagem', 'caramba, ta funcionando');
+      }
+      function falaSobreFernando() {
+        socket.emit('fernando', { atributo: 'Muito legal' });
+      }
+    </script>
+    <div class="box-msgs"></div>
+    <div class="box-submit">
+      <p>Envie a mensagem:</p>
+      <input id="user-name" type="text" name="nome" placeholder="User name" />
+      <textarea
+        name="comment"
+        id="user-msg"
+        placeholder="Digite a mensagem..."
+      ></textarea>
+    </div>
+
+    <button onclick="collectUserName()">Enviar user name</button>
+
+    <button onclick="falaSobreFernando()">Falar sobre fernando!</button>
+    <button onclick="enviarMsg()">Enviar msg!</button>
+
+    <p id="msgs"></p>
+  </body>
+</html>

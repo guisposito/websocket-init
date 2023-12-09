@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: system-ui, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.box-msgs {
+  border: 1px solid #111;
+  border-radius: 10px;
+  width: auto;
+  height: 600px;
+  padding: 10px 5px;
+  background-color: rgb(56, 56, 56);
+}
+
+.box-msgrec {
+  width: auto;
+  height: auto;
+  padding: 2px;
+  border: 1px solid rgb(40, 133, 79);
+  border-radius: 10px;
+  color: #f1f1f1;
+  float: right;
+  margin: 0 5px;
+}

@@ -1,0 +1,12 @@
+
+Etapa 1:
+- Setup inicial do front
+- Criar tela inicial (input no nome para aparecer no chat)
+- Setup inicial do back
+- Criação da estrutura inicial do ws
+- Criar tela no front com uma caixa de mensagens dinâmica que possibilite inserção de mensagens
+
+Etapa 2:
+- Vincular tela ao ws
+- Fazer o "lobby geral" de conversa
+- Inserir rooms para possibilitar criação de "grupos" (conversas 2-n membros) e de conversa privativa (2 membros)
